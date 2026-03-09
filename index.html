@@ -71,7 +71,7 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
 .pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform 0.35s;}
 .pcard:hover{border-color:var(--accent);transform:translateY(-5px);}
 .pcard:hover::after{transform:scaleX(1);}
-.pcard-img{width:100%;height:170px;object-fit:cover;display:block;}
+.pcard-img{width:100%;height:200px;object-fit:contain;display:block;background:#0a0a0f;}
 .pcard-emoji{height:170px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,rgba(124,106,247,0.15),rgba(249,124,110,0.08));}
 .pcard-body{padding:1.4rem;}
 .pcard-num{font-size:0.7rem;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.5rem;text-transform:uppercase;font-family:'Syne',sans-serif;}
