@@ -129,6 +129,19 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
   h1.name{font-size:2.4rem;}
   .page-title{font-size:1.5rem;}
 }
+  .logo-sub::after{content:'|';animation:blink 0.7s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+
+.skills-list{display:flex;flex-direction:column;gap:1.2rem;}
+.skill-row{display:flex;align-items:center;gap:1rem;}
+.sk-name{width:110px;font-size:0.88rem;font-weight:500;}
+.sk-bar{flex:1;height:8px;background:var(--border);border-radius:999px;overflow:hidden;}
+.sk-fill{height:100%;background:var(--grad);border-radius:999px;width:0%;transition:width 1.2s ease;}
+.sk-pct{width:36px;font-size:0.78rem;color:var(--muted);text-align:right;}
+
+
+#cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(124,106,247,0.12),transparent 70%);pointer-events:none;transform:translate(-50%,-50%);transition:left 0.08s,top 0.08s;z-index:9999;left:-999px;top:-999px;}
 </style>
 </head>
 <body>
@@ -139,7 +152,7 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="logo">ACG</div>
-  <div class="logo-sub">Junior Data Analyst</div>
+  <div class="logo-sub" id="typing-text"></div>
   <div class="nav-item active" id="nav-home"><span>🏠</span><span>Home</span><span class="nav-dot"></span></div>
   <div class="nav-item" id="nav-about"><span>👩‍💻</span><span>About</span><span class="nav-dot"></span></div>
   <div class="nav-item" id="nav-skills"><span>🛠️</span><span>Skills</span><span class="nav-dot"></span></div>
@@ -185,14 +198,14 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
 <div class="page" id="page-skills">
   <div class="page-title">Skills</div>
   <div class="page-sub">Tools & technologies I work with</div>
-  <div class="skills-grid">
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(33,115,70,0.15);">📊</div><div class="skill-name">Excel</div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(0,120,212,0.15);">🗄️</div><div class="skill-name">SQL</div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(55,118,171,0.15);">🐍</div><div class="skill-name">Python</div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(243,165,28,0.15);">⚡</div><div class="skill-name">Power BI</div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(124,106,247,0.15);">📐</div><div class="skill-name">DAX</div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(93,228,199,0.15);">🗺️</div><div class="skill-name">Pandas</div></div>
-  </div>
+  <div class="skills-list">
+  <div class="skill-row"><span class="sk-name">📊 Excel</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
+  <div class="skill-row"><span class="sk-name">🗄️ SQL</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
+  <div class="skill-row"><span class="sk-name">🐍 Python</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div></div>
+  <div class="skill-row"><span class="sk-name">⚡ Power BI</span><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
+  <div class="skill-row"><span class="sk-name">📐 DAX</span><div class="sk-bar"><div class="sk-fill" style="width:70%"></div></div></div>
+  <div class="skill-row"><span class="sk-name">🗺️ Pandas</span><div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div></div>
+</div>
 </div>
 
 <!-- PROJECTS -->
@@ -320,6 +333,38 @@ window.addEventListener("load", function() {
     if (el) el.addEventListener("click", function(){ showPage(id); });
   });
 });
+  
+var glow = document.getElementById("cursor-glow");
+document.addEventListener("mousemove", function(e){
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+
+var texts = ["Junior Data Analyst", "Power BI Developer", "Python Enthusiast", "Data Visualizer"];
+var ti = 0, ci = 0, del = false;
+var el = document.getElementById("typing-text");
+function type(){
+  if(!el) return;
+  var cur = texts[ti];
+  if(!del){ el.textContent = cur.slice(0,++ci); if(ci===cur.length){ del=true; setTimeout(type,1800); return; }}
+  else{ el.textContent = cur.slice(0,--ci); if(ci===0){ del=false; ti=(ti+1)%texts.length; }}
+  setTimeout(type, del ? 60 : 100);
+}
+type();
+
+
+var origShow = showPage;
+showPage = function(id){
+  origShow(id);
+  if(id === "skills"){
+    setTimeout(function(){
+      document.querySelectorAll(".sk-fill").forEach(function(bar){
+        bar.style.width = bar.style.width;
+      });
+    }, 100);
+  }
+};
 </script>
 
 
@@ -331,5 +376,6 @@ window.addEventListener("load", function() {
   <div class="bnav-item" id="bnav-certificates"><span class="bnav-icon">&#127942;</span><span class="bnav-label">Certs</span></div>
   <div class="bnav-item" id="bnav-contact"><span class="bnav-icon">&#9993;&#65039;</span><span class="bnav-label">Contact</span></div>
 </nav>
+<div id="cursor-glow"></div>
 </body>
 </html>
