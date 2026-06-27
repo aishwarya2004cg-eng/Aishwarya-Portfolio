@@ -59,11 +59,11 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
 .stat-label{color:var(--muted);font-size:0.78rem;margin-top:0.2rem;}
 
 /* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;}
-.skill-pill{display:flex;flex-direction:column;align-items:center;gap:0.6rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem;transition:all 0.25s;}
-.skill-pill:hover{border-color:var(--accent);transform:translateY(-4px);}
-.skill-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
-.skill-name{font-weight:500;font-size:0.88rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px;}
+.skill-pill{display:flex;flex-direction:column;align-items:center;gap:1rem;background:var(--card);border:16px solid var(--border);border-radius:16px;padding:2rem 1.5rem;min-height:240px;transition:all 0.3s;}
+.skill-pill:hover{border-color:var(--accent);transform:translateY(-6px);}
+.skill-icon{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+.skill-name{font-size:1rem;font-weight:600;text-align:center;line-height:1.8;}
 
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.3rem;}
@@ -200,12 +200,12 @@ h1.name{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weig
   <div class="page-title">Skills</div>
   <div class="page-sub">Tools & technologies I work with</div>
   <div class="skills-grid">
-  <div class="skill-pill"><div class="skill-icon" style="background:rgba(33,115,70,0.15);">📊</div><div class="skill-name">Excel<p>Data Cleaning,Pivot Tables,Power Query,Reporting</p></div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(0,120,212,0.15);">🗄️</div><div class="skill-name">SQL<p>Joins,Subqueries,Aggregations,Window Functions</p></div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(55,118,171,0.15);">🐍</div><div class="skill-name">Python<p>Pandas,Numpy,Data Analysis</p></div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(243,165,28,0.15);">⚡</div><div class="skill-name">Power BI<p>Dashboard development,Data visualization,Reporting</p></div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(124,106,247,0.15);">📐</div><div class="skill-name">DAX<p>Measures,Calculated Columns</p></div></div>
-    <div class="skill-pill"><div class="skill-icon" style="background:rgba(93,228,199,0.15);">🗺️</div><div class="skill-name">Power Query<p>ETL processes,Data Transformation,Data Preparation</p></div></div>
+  <div class="skill-pill"><div class="skill-icon" style="background:rgba(33,115,70,0.15);">📊</div><h3 class="skill-name">Excel</h3><p class="skill-desc">Data Cleaning<br>Pivot Tables<br>Power Query<br>Reporting<br></p></div>
+    <div class="skill-pill"><div class="skill-icon" style="background:rgba(0,120,212,0.15);">🗄️</div><h3 class="skill-name">SQL</h3><p class="skill-desc">Joins<br>Subqueries<br>Aggregations<br>Window Functions<br></p></div>
+    <div class="skill-pill"><div class="skill-icon" style="background:rgba(55,118,171,0.15);">🐍</div><h3 class="skill-name">Python</h3><p class="skill-desc">Pandas<br>Numpy<br>Data Analysis<br></p></div>
+    <div class="skill-pill"><div class="skill-icon" style="background:rgba(243,165,28,0.15);">⚡</div><h3 class="skill-name">Power BI</h3><p class="skill-desc">Dashboard development<br>Data visualization<br>Reporting<br></p></div>
+    <div class="skill-pill"><div class="skill-icon" style="background:rgba(124,106,247,0.15);">📐</div><h3 class="skill-name">DAX</h3><p class="skill-desc">Measures<br>Calculated Columns<br></p></div>
+    <div class="skill-pill"><div class="skill-icon" style="background:rgba(93,228,199,0.15);">🗺️</div><h3 class="skill-name">Power Query</h3><p class="skill desc">ETL processes<br>Data Transformation<br>Data Preparation<br></p></div>
   </div>
 </div>
 
